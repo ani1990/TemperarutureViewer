@@ -1,0 +1,62 @@
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="Chart.bundle.js"></script>
+    <script src="utils.js"></script>    
+   <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+    </head>
+    <body>
+    <div class="navbar"><span>Real-Time Temperature Vs Time Plot</span></div>
+    <div class="wrapper">
+
+        <div  id="canvas"  style="width:100%;height:150%;">
+        </div>
+        <script>
+	    var receivedData = null;	
+            function getData() {
+		//receivedData =  Math.random();
+                receivedData = window.AppInventor.getWebViewString();
+		if(receivedData != "invalid"){
+		    return receivedData; 			
+		}
+		else{
+		    return null;	
+		}
+            }  
+            var layout = {
+                 title: 'Temperature Vs Time',
+                 xaxis: {
+                    title: 'Time in Seconds'
+                        },
+                 yaxis: {
+                    title: 'Temperature in °C'
+                }
+            };          
+
+            Plotly.plot('canvas',[{
+                y:[getData()],
+                type:'line'
+            }], layout);
+            
+            var cnt = 0;
+	    var data = 0; 	
+
+            setInterval(function(){
+				data = getData();
+				if(data != null){	
+                	Plotly.extendTraces('canvas',{ y:[[data]]}, [0]);
+                	cnt++;
+                	if(cnt > 1000) {
+                    	Plotly.relayout('canvas',{
+                        	xaxis: {
+                            	range: [cnt-1000,cnt]
+                        	}
+                    	});
+                	}
+				}
+            },1000);
+        </script>
+    </div>
+    </body>
+</html>
