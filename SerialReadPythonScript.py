@@ -16,7 +16,7 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 #current time and date
 
-ser = serial.Serial('/dev/ttyUSB1', 38400, timeout=0)
+ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=0)
 
 interval = 1
 while 1:
@@ -35,7 +35,7 @@ while 1:
     #print (temperature_c[0])
     
     sensorData = str(temperature_c[0])
-    #print (sensorData)
+    print (sensorData)
 
     time_hhmmss = time.strftime('%H:%M:%S')
     date_mmddyyyy = time.strftime('%d-%m-%Y')
@@ -50,8 +50,8 @@ while 1:
     NodeID = sensorData[2] + sensorData[3]
     temperature = sensorData[4] + sensorData[5]
 
-    #print (NodeID)
-    #print (temperature) 
+    print (NodeID)
+    print (temperature) 
     
     if(NodeID == '13'):
         node = "Node 13/"
