@@ -37,3 +37,8 @@
 ## Firebase cloud service
 * Firebase is the real-time cloud services provided by Google to read and write data in real-time in Cloud
 * Please follow this [link](https://firebase.google.com/) to create firebase database.
+
+## Authors
+* Animesh Mukherjee
+* Sharad Sirsat
+* Giriaj Pawar
