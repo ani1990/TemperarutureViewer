@@ -41,4 +41,4 @@
 ## Authors
 * Animesh Mukherjee
 * Sharad Sirsat
-* Giriaj Pawar
+* Giriraj Pawar
